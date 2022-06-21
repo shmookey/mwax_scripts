@@ -1,0 +1,18 @@
+#!/bin/sh
+# mwax-save-pmap -- Save the packet map from a subfile to a directory
+# 
+#   mwax-save-pmap <directory> <file>
+#
+#  <directory>   Output directory
+#  <file>        Path to subfile
+#
+# The output file name is the input file name with the suffix `.pmap` added.
+# If the input file name ends with `.free` or `.sub`, the existing prefix is
+# replaced, otherwise the `.pmap` suffix is simply appended.
+
+outdir="$1"
+infile="$2"
+name=$(basename $infile | sed -e 's/\.\(sub\|free\)$//')
+
+mwax-extract-packet-map $infile $outdir/$name.pmap
+

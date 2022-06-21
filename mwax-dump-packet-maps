@@ -1,0 +1,8 @@
+#!/bin/sh
+
+for f in $(find /dev/shm/mwax -name '*.sub')
+do
+  name=$(basename $f | sed -e 's/\([0-9]*\)\.sub/\1/')
+  mwax-extract-packet-map $f $1/$name.pmap
+  mwax-run mv $f /dev/shm/mwax/$name.free
+done

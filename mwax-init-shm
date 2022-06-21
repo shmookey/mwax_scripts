@@ -1,0 +1,15 @@
+#!/bin/sh
+# (Re)create /dev/shm/mwax
+mwax-run rm -rf /dev/shm/mwax
+mwax-run mkdir -p /dev/shm/mwax
+mwax-run numactl --cpunodebind=1 --membind=1 dd bs=2048 count=2737002 if=/dev/zero of=/dev/shm/mwax/a.free
+mwax-run numactl --cpunodebind=1 --membind=1 dd bs=2048 count=2737002 if=/dev/zero of=/dev/shm/mwax/b.free
+mwax-run numactl --cpunodebind=1 --membind=1 dd bs=2048 count=2737002 if=/dev/zero of=/dev/shm/mwax/c.free
+mwax-run numactl --cpunodebind=1 --membind=1 dd bs=2048 count=2737002 if=/dev/zero of=/dev/shm/mwax/d.free
+mwax-run numactl --cpunodebind=1 --membind=1 dd bs=2048 count=2737002 if=/dev/zero of=/dev/shm/mwax/e.free
+mwax-run numactl --cpunodebind=1 --membind=1 dd bs=2048 count=2737002 if=/dev/zero of=/dev/shm/mwax/f.free
+mwax-run numactl --cpunodebind=1 --membind=1 dd bs=2048 count=2737002 if=/dev/zero of=/dev/shm/mwax/g.free
+mwax-run numactl --cpunodebind=1 --membind=1 dd bs=2048 count=2737002 if=/dev/zero of=/dev/shm/mwax/h.free
+mwax-run chmod -R g+w /dev/shm/mwax
+mwax-run chgrp -R mwax /dev/shm/mwax
+

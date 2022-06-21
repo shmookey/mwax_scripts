@@ -1,0 +1,9 @@
+#!/bin/sh
+
+n=0
+for f in $(find /dev/shm/mwax -name '*.sub')
+do
+  mwax-run mv $f /dev/shm/mwax/$n.free
+  n=$((n+1))
+done
+

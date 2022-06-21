@@ -1,0 +1,5 @@
+#!/bin/bash
+
+path=$(find /dev/shm/mwax -name '*.sub' | sort | head -n 1)
+mwax-run mv $path /dev/shm/mwax/99.free
+
